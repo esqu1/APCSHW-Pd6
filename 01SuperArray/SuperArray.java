@@ -98,6 +98,9 @@ public class SuperArray{
 	Object tobe = Array[index];
 	Array = backup;
 	size -= 1;
+	if(Array.length - size() >= 5){
+	    resize(size() - 5);
+	}
 	return tobe;
     }
     public void clear(){
