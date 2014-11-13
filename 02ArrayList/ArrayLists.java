@@ -2,9 +2,9 @@ import java.util.*;
 public class ArrayLists{
 
     public static void collapseDuplicates(ArrayList<Integer> L){
-	for(int i = 0; i < L.size(); i++){
+	for(int i = 0; i < L.size() - 1; i++){
 	    while(true){
-		if(i < L.size() - 1 && L.get(i) == L.get(i+1)){
+		if(L.get(i) == L.get(i+1)){
 		    L.remove(i+1);
 		}else{
 		    break;
