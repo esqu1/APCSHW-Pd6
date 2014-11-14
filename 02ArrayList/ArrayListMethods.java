@@ -13,7 +13,7 @@ public class ArrayListMethods{
 	}
     }
 
-    public static void randomArrayList(ArrayList<Integer> L){
+    public static void randomize(ArrayList<Integer> L){
 	Random r = new Random();
 	for(int i = 0; i < L.size(); i++){
 	    int place = r.nextInt(L.size());
@@ -37,7 +37,7 @@ public class ArrayListMethods{
 	    M.add(i);
 	}
 	System.out.println(M);
-	randomArrayList(M);
+	randomize(M);
 	System.out.println(M);
     }
 
