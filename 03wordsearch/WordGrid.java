@@ -30,7 +30,7 @@ public class WordGrid{
 	    for(int j = 0; j < data[i].length; j++){
 		s+= " " + data[i][j];
 	    }
-	    s += " ]";
+	    s += " ]\n";
 	}
 	return s;
     }
@@ -46,6 +46,17 @@ public class WordGrid{
      *or there are overlapping letters that do not match, then false is returned.
      */
     public boolean addWordHorizontal(String word, int row, int col){
+	if(word.length() >= data[0].length){
+	    return false;
+	}
+	for(int i = col; i < col + word.length(); i++){
+	    if(/*<insert something here to check if null> && */ word.charAt(i - col) != data[row][i]){
+		return false;
+	    }
+	}
+	for(int i = col; i < col + word.length(); i++){
+	    data[row][i] = word.charAt(i - col);
+	}
 	return true;
     }
 
