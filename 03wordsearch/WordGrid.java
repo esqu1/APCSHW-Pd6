@@ -8,6 +8,7 @@ public class WordGrid{
      */
     public WordGrid(int row, int cols){
 	data = new char[row][cols];
+	clear();
     }
 
     /**Resets all values in the WordGrid to spaces ' '*/
@@ -46,11 +47,13 @@ public class WordGrid{
      *or there are overlapping letters that do not match, then false is returned.
      */
     public boolean addWordHorizontal(String word, int row, int col){
-	if(word.length() >= data[0].length){
+	if(word.length() > data[0].length){
+	    System.out.println("Oh well...");
 	    return false;
 	}
 	for(int i = col; i < col + word.length(); i++){
-	    if(/*<insert something here to check if null> && */ word.charAt(i - col) != data[row][i]){
+	    if(data[row][i] != ' ' && word.charAt(i - col) != data[row][i]){
+		System.out.println("Too bad...");
 		return false;
 	    }
 	}

@@ -30,7 +30,12 @@ public class ArrayListMethods{
 	}
     }
 
-
+    public static void stupidRandom(ArrayList<Integer> L){
+	Random r = new Random();
+	ArrayList<Integer> M = new ArrayList<Integer>();
+	for(int i = 0; 
+	    
+    
     public static void main(String[] args){
 	ArrayList<Integer> L = new ArrayList<Integer>();
 	int[] A = {1,9,3,3,4,2,2,2,7,8,8,8,8,9};
