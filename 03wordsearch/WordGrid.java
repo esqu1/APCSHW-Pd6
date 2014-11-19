@@ -24,7 +24,15 @@ public class WordGrid{
      *separated by new lines.
      */
     public String toString(){
-
+	String s = "";
+	for(int i = 0; i < data.length; i++){
+	    s += "[";
+	    for(int j = 0; j < data[i].length; j++){
+		s+= " " + data[i][j];
+	    }
+	    s += " ]";
+	}
+	return s;
     }
 
     /**Attempts to add a given word to the specified position of the WordGrid.
@@ -38,7 +46,7 @@ public class WordGrid{
      *or there are overlapping letters that do not match, then false is returned.
      */
     public boolean addWordHorizontal(String word, int row, int col){
-
+	return true;
     }
 
 }
