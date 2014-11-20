@@ -6,6 +6,8 @@ public class Driver{
 	p.addWordHorizontal("pie",2,1);
 	p.addWordHorizontal("banana",2,3);
 	p.addWordHorizontal("you",2,1);
+	p.addWordVertical("noob",0,0);
+	p.addWordDiagonal("pine",1,1);
 	System.out.println(p);
     }
 
