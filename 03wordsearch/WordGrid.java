@@ -37,6 +37,23 @@ public class WordGrid{
     }
 
     /**Attempts to add a given word to the specified position of the WordGrid.
+     *The word is added based on the direction specified by the dirx and diry variables,
+     *and must have a corresponding letter to match any letters that it overlaps.
+     *
+     *@param word is any text to be added to the word grid.
+     *@param row is the vertical location of where you want the word to start.
+     *@param col is the horizontal location of where you want the word to start.
+     *@param dirx ranges from -1 to 1, specifies the direction of the word in the horizontal direction.
+     *@param diry ranges from -1 to 1, specifries the direciton of the word in the horizontal direction.
+     *@return true when the word is added successfully. When the word doesn't fit,
+     *or there are overlapping letter that do not match, then false is returned.
+     */
+
+    public boolean addWord(String word, int row, int col, int dirx, int diry){
+	
+    }
+
+    /**Attempts to add a given word to the specified position of the WordGrid.
      *The word is added from left to right, must fit on the WordGrid, and must
      *have a corresponding letter to match any letters that it overlaps.
      *
