@@ -50,7 +50,16 @@ public class WordGrid{
      */
 
     public boolean addWord(String word, int row, int col, int dirx, int diry){
-	
+	if((Math.abs(dirx) == 1 && word.length() > data[0].length) || (Math.abs(diry) == 1 && word.length() > data.length)){
+	    return false;
+	}
+	for(int i = 0; i < word.length(); i++){
+	    if(data[row+i*dirx][col+i*diry] != ' ' && word.charAt(i) != data[row+i*dirx][col+i*diry]){
+		return false;
+	    }
+	}
+	for(int i = 0; i < word.length(); i++){}
+       
     }
 
     /**Attempts to add a given word to the specified position of the WordGrid.
