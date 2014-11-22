@@ -30,6 +30,7 @@ public class WordGrid{
 	while(s.hasNext()){
 	    str += s.next();	    
 	}
+	return str;
     }
 
     /**The proper formatting for a WordGrid is created in the toString.
@@ -60,7 +61,6 @@ public class WordGrid{
      *@return true when the word is added successfully. When the word doesn't fit,
      *or there are overlapping letter that do not match, then false is returned.
      */
-
     public boolean addWord(String word, int row, int col, int dirx, int diry){
 	if(Math.abs(dirx) <= 1 || Math.abs(diry)){
 	    return false;
