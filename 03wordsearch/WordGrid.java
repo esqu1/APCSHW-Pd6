@@ -20,6 +20,18 @@ public class WordGrid{
 	}
     }
 
+    /**Loads the word in a plaintext file into a array of Strings.
+     *@return an array of strings containing the list of available words to load.
+     */
+    public String[] load(){
+	File F = new File("words.txt");
+	Scanner s = new Scanner(F);
+	String str = "";
+	while(s.hasNext()){
+	    str += s.next();	    
+	}
+    }
+
     /**The proper formatting for a WordGrid is created in the toString.
      *@return a String with each character separated by spaces, and each row
      *separated by new lines.
@@ -50,6 +62,9 @@ public class WordGrid{
      */
 
     public boolean addWord(String word, int row, int col, int dirx, int diry){
+	if(Math.abs(dirx) <= 1 || Math.abs(diry)){
+	    return false;
+	}
 	if((Math.abs(dirx) == 1 && word.length() > data[0].length) || (Math.abs(diry) == 1 && word.length() > data.length)){
 	    return false;
 	}
@@ -58,7 +73,9 @@ public class WordGrid{
 		return false;
 	    }
 	}
-	for(int i = 0; i < word.length(); i++){}
+	for(int i = 0; i < word.length(); i++){
+	    data[row+dirx][col+diry] = word.charAt(i);
+	}
        
     }
 
@@ -77,12 +94,12 @@ public class WordGrid{
 	    return false;
 	}
 	for(int i = 0; i < word.length(); i++){
-	    if(data[row][i+col] != ' ' && word.charAt(i) != data[row][i+col]){
+	    if(data[row][col+i] != ' ' && word.charAt(i) != data[row][col+i]){
 		return false;
 	    }
 	}
 	for(int i = 0; i < word.length(); i++){
-	    data[row][i+col] = word.charAt(i);
+	    data[row][col+i] = word.charAt(i);
 	}
 	return true;
     }
