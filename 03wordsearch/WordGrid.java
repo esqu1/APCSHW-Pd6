@@ -101,6 +101,9 @@ public class WordGrid{
 	return true;      
     }
 
+    /**Fills the remaining empty parts of the puzzle with random characters.
+     *
+     */
     public void fillRest(){
 	Random r = new Random();
 	for(int i = 0; i < data.length; i++){
