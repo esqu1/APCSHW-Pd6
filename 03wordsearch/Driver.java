@@ -14,7 +14,7 @@ public class Driver{
 
     public static void main(String[] args){
 	Scanner s;
-	WordGrid p = new WordGrid(7,7);
+	WordGrid p = new WordGrid(20,20);
 	File F = new File("words.txt");
 	try{
 	    s = new Scanner(F);
@@ -25,8 +25,6 @@ public class Driver{
 	while(s.hasNext()){
 	    str.add(s.next());
 	}
-	System.out.println(str);
-
 	p.randomAdd(str);
 	System.out.println("Welcome, mortal! In a few milliseconds, you will be faced with a word search puzzle!");
 	pause(2);

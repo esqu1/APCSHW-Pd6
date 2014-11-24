@@ -49,6 +49,7 @@ public class WordGrid{
 		}
 	    }
 	}
+	fillRest();
     }
     
     /**The proper formatting for a WordGrid is created in the toString.
@@ -98,6 +99,17 @@ public class WordGrid{
 	    data[row+i*diry][col+i*dirx] = word.charAt(i);
 	}
 	return true;      
+    }
+
+    public void fillRest(){
+	Random r = new Random();
+	for(int i = 0; i < data.length; i++){
+	    for(int j = 0; j < data[0].length; j++){
+		if(data[i][j] == ' '){
+		    data[i][j] = (char)('a' + r.nextInt(26));
+		}
+	    }
+	}
     }
 
     
