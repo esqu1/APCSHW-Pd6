@@ -1,4 +1,3 @@
-import java.util.*;
 public class Driver{
 
     public static void main(String[] args){
@@ -9,9 +8,8 @@ public class Driver{
 	p.addWordHorizontal("you",2,1);
 	p.addWordVertical("noob",0,0);
 	p.addWordDiagonal("pine",1,1);
+	
 	System.out.println(p);
-	ArrayList<String> L = p.load("words.txt");
-	System.out.println(L);
     }
 
 }

@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][] data;
 
@@ -23,12 +26,18 @@ public class WordGrid{
     /**Loads the word in a plaintext file into a array of Strings.
      *@return an array of strings containing the list of available words to load.
      */
-    public String[] load(){
-	File F = new File("words.txt");
-	Scanner s = new Scanner(F);
-	String str = "";
+    public ArrayList<String> load(String t){
+	Scanner s;
+	File F = new File(t);
+	try{
+	    s = new Scanner(F);
+	}catch(FileNotFoundException e){
+	    s = new Scanner(System.in);
+	}
+
+	ArrayList<String> str = new ArrayList<String>();
 	while(s.hasNext()){
-	    str += s.next();	    
+	    str.add(s.next());	    
 	}
 	return str;
     }
@@ -62,7 +71,7 @@ public class WordGrid{
      *or there are overlapping letter that do not match, then false is returned.
      */
     public boolean addWord(String word, int row, int col, int dirx, int diry){
-	if(Math.abs(dirx) <= 1 || Math.abs(diry)){
+	if(Math.abs(dirx) <= 1 || Math.abs(diry) <= 1){
 	    return false;
 	}
 	if((Math.abs(dirx) == 1 && word.length() > data[0].length) || (Math.abs(diry) == 1 && word.length() > data.length)){
@@ -76,7 +85,7 @@ public class WordGrid{
 	for(int i = 0; i < word.length(); i++){
 	    data[row+dirx][col+diry] = word.charAt(i);
 	}
-       
+	return true;      
     }
 
     /**Attempts to add a given word to the specified position of the WordGrid.
