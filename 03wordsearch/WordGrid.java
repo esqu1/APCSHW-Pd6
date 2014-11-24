@@ -90,19 +90,22 @@ public class WordGrid{
      *or there are overlapping letter that do not match, then false is returned.
      */
     public boolean addWord(String word, int row, int col, int dirx, int diry){
-	if(Math.abs(dirx) >= 1 || Math.abs(diry) >= 1){
+	if(Math.abs(dirx) > 1 || Math.abs(diry) > 1){
+	    return false;
+	}
+	if(dirx == 0 && diry == 0){
 	    return false;
 	}
 	if((Math.abs(dirx) == 1 && word.length() > data[0].length) || (Math.abs(diry) == 1 && word.length() > data.length)){
 	    return false;
 	}
 	for(int i = 0; i < word.length(); i++){
-	    if(data[row+i*dirx][col+i*diry] != ' ' && word.charAt(i) != data[row+i*dirx][col+i*diry]){
+	    if((row+i*diry < 0 || row+i*diry >= data.length || col+i*dirx < 0 || col+i*dirx >= data[0].length) || data[row+i*diry][col+i*dirx] != ' ' && word.charAt(i) != data[row+i*diry][col+i*dirx]){
 		return false;
 	    }
 	}
 	for(int i = 0; i < word.length(); i++){
-	    data[row+dirx][col+diry] = word.charAt(i);
+	    data[row+i*diry][col+i*dirx] = word.charAt(i);
 	}
 	return true;      
     }
