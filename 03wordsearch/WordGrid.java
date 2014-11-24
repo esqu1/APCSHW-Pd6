@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][] data;
+    private ArrayList<String> listOfWords;
 
     /**Initialize the gird to the size specified and fill all of the positions
      *with spaces.
@@ -23,10 +24,9 @@ public class WordGrid{
 	}
     }
 
-    /**Loads the word in a plaintext file into a array of Strings.
-     *@return an array of strings containing the list of available words to load.
+    /**Loads the word in a plaintext file to the listOfWords ArrayList.
      */
-    public ArrayList<String> load(String t){
+    public void load(String t){
 	Scanner s;
 	File F = new File(t);
 	try{
@@ -39,9 +39,27 @@ public class WordGrid{
 	while(s.hasNext()){
 	    str.add(s.next());	    
 	}
-	return str;
+	listOfWords = str;
     }
 
+    /**Attempts to randomly add the available words to the Word Search puzzle.
+     *
+     */
+    public void randomAdd(){
+	Random r = new Random();
+	for(int i = 0; i < listOfWords.size(); i++){
+	    for(int j = 0; j < 3; j++){
+		int a = r.nextInt(data.length);
+		int b = r.nextInt(data[0].length);
+		int c = r.nextInt(3) - 1;
+		int d = r.nextInt(3) - 1;
+		if(addWord(listOfWords.get(i),a,b,c,d)){
+		    break;
+		}
+	    }
+	}
+    }
+    
     /**The proper formatting for a WordGrid is created in the toString.
      *@return a String with each character separated by spaces, and each row
      *separated by new lines.
