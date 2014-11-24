@@ -39,6 +39,7 @@ public class WordGrid{
 	while(s.hasNext()){
 	    str.add(s.next());	    
 	}
+	System.out.println(str);
 	listOfWords = str;
     }
 
@@ -89,7 +90,7 @@ public class WordGrid{
      *or there are overlapping letter that do not match, then false is returned.
      */
     public boolean addWord(String word, int row, int col, int dirx, int diry){
-	if(Math.abs(dirx) <= 1 || Math.abs(diry) <= 1){
+	if(Math.abs(dirx) >= 1 || Math.abs(diry) >= 1){
 	    return false;
 	}
 	if((Math.abs(dirx) == 1 && word.length() > data[0].length) || (Math.abs(diry) == 1 && word.length() > data.length)){
