@@ -3,8 +3,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][] data;
+    private ArrayList<String> availables = new ArrayList<String>();
 
-    /**Initialize the gird to the size specified and fill all of the positions
+    /**Initialize the grid to the size specified and fill all of the positions
      *with spaces.
      *@param row is the starting height of the WordGrid
      *@param col is the starting width of the WordGrid
@@ -23,24 +24,13 @@ public class WordGrid{
 	}
     }
 
-    /**Loads the word in a plaintext file to the listOfWords ArrayList.
+    /**Returns an ArrayList of the available words.
+     *@return an ArrayList containing the words in the puzzle.
      */
-    public void load(String t){
-	Scanner s;
-	File F = new File(t);
-	try{
-	    s = new Scanner(F);
-	}catch(FileNotFoundException e){
-	    s = new Scanner(System.in);
-	}
-
-	ArrayList<String> str = new ArrayList<String>();
-	while(s.hasNext()){
-	    str.add(s.next());	    
-	}
-	System.out.println(str);
-	listOfWords = str;
+    public ArrayList<String> getAvailables(){
+	return availables;
     }
+    
 
     /**Attempts to randomly add the available words to the Word Search puzzle.
      *
@@ -49,11 +39,12 @@ public class WordGrid{
 	Random r = new Random();
 	for(int i = 0; i < listOfWords.size(); i++){
 	    for(int j = 0; j < 3; j++){
-		int a = r.nextInt(data.length);
-		int b = r.nextInt(data[0].length);
-		int c = r.nextInt(3) - 1;
-		int d = r.nextInt(3) - 1;
-		if(addWord(listOfWords.get(i),a,b,c,d)){
+		if(addWord(listOfWords.get(i),
+			   r.nextInt(data.length),
+			   r.nextInt(data[0].length),
+			   r.nextInt(3) - 1,
+			   r.nextInt(3) - 1)){
+		    availables.add(listOfWords.get(i));
 		    break;
 		}
 	    }

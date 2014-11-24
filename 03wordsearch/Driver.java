@@ -25,18 +25,21 @@ public class Driver{
 	while(s.hasNext()){
 	    str.add(s.next());
 	}
+	System.out.println(str);
 
+	p.randomAdd(str);
 	System.out.println("Welcome, mortal! In a few milliseconds, you will be faced with a word search puzzle!");
 	pause(2);
 	System.out.println("Here are the words you will need to find:");
 	pause(1);
-	for(int i = 0; i < str.size(); i++){
-	    System.out.print(str.get(i) + " ");
+	for(int i = 0; i < p.getAvailables().size(); i++){
+	    System.out.print(p.getAvailables().get(i) + " ");
 	    if(i % 3 == 2){
 		System.out.println("");
 	    }
 	}	
-       	p.randomAdd(str);
+
+	System.out.println("");
 	System.out.println(p);
     }
 
