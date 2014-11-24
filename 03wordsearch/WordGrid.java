@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][] data;
-    private ArrayList<String> listOfWords;
 
     /**Initialize the gird to the size specified and fill all of the positions
      *with spaces.
@@ -46,7 +45,7 @@ public class WordGrid{
     /**Attempts to randomly add the available words to the Word Search puzzle.
      *
      */
-    public void randomAdd(){
+    public void randomAdd(ArrayList<String> listOfWords){
 	Random r = new Random();
 	for(int i = 0; i < listOfWords.size(); i++){
 	    for(int j = 0; j < 3; j++){
