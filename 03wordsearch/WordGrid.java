@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][] data;
     private ArrayList<String> availables = new ArrayList<String>();
+    Random r = new Random();
 
     /**Initialize the grid to the size specified and fill all of the positions
      *with spaces.
@@ -13,6 +14,13 @@ public class WordGrid{
     public WordGrid(int row, int cols){
 	data = new char[row][cols];
 	clear();
+    }
+
+    /**Sets the seed of the Random object of the word search puzzle.
+     *Allows for the same puzzle to be generated multiple times.
+     */
+    public void setSeed(long seed){
+	r.setSeed(seed);
     }
 
     /**Resets all values in the WordGrid to spaces ' '*/
