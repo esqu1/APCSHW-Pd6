@@ -16,8 +16,8 @@ public class Driver{
 	if(args.length > 0){
 	    
 	    Scanner s;
-	    WordGrid p = new WordGrid((int)args[0],(int)args[1]);
-	    p.setSeed((long)args[2]);
+	    WordGrid p = new WordGrid(Integer.parseInt(args[0]),Integer.parseInt(args[1]));
+	    p.setSeed(args[2]);
 	    File F = new File("words.txt");
 	    try{
 		s = new Scanner(F);
@@ -43,6 +43,12 @@ public class Driver{
 	    System.out.println("");
 	    System.out.println(p);
 	}else{
+	    System.out.println("Usage:\n" +
+			       "java Driver <rows> <cols> [<random seed> [<display answer>]]\n" +
+			       "\n" +
+			       "<rows> and <cols> specify the number of row and columns, respectively.\n" +
+			       "<random seed> is a long-type number that will generate a puzzle based on the seed.\n" +
+			       "<display answer> is set to 1 if you want the answer to be revealed.");
 
 	}
 	
