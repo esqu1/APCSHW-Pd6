@@ -13,32 +13,39 @@ public class Driver{
     }
 
     public static void main(String[] args){
-	Scanner s;
-	WordGrid p = new WordGrid(20,20);
-	File F = new File("words.txt");
-	try{
-	    s = new Scanner(F);
-	}catch(FileNotFoundException e){
-	    s = new Scanner(System.in);
-	}
-	ArrayList<String> str = new ArrayList<String>();
-	while(s.hasNext()){
-	    str.add(s.next());
-	}
-	p.randomAdd(str);
-	System.out.println("Welcome, mortal! In a few milliseconds, you will be faced with a word search puzzle!");
-	pause(2);
-	System.out.println("Here are the words you will need to find:");
-	pause(1);
-	for(int i = 0; i < p.getAvailables().size(); i++){
-	    System.out.print(p.getAvailables().get(i) + " ");
-	    if(i % 3 == 2){
-		System.out.println("");
+	if(args.length > 0){
+	    
+	    Scanner s;
+	    WordGrid p = new WordGrid((int)args[0],(int)args[1]);
+	    p.setSeed((long)args[2]);
+	    File F = new File("words.txt");
+	    try{
+		s = new Scanner(F);
+	    }catch(FileNotFoundException e){
+		s = new Scanner(System.in);
 	    }
-	}	
+	    ArrayList<String> str = new ArrayList<String>();
+	    while(s.hasNext()){
+		str.add(s.next());
+	    }
+	    p.randomAdd(str);
+	    System.out.println("Welcome, mortal! In a few milliseconds, you will be faced with a word search puzzle!");
+	    pause(2);
+	    System.out.println("Here are the words you will need to find:");
+	    pause(1);
+	    for(int i = 0; i < p.getAvailables().size(); i++){
+		System.out.print(p.getAvailables().get(i) + " ");
+		if(i % 3 == 2){
+		    System.out.println("");
+		}
+	    }	
 
-	System.out.println("");
-	System.out.println(p);
+	    System.out.println("");
+	    System.out.println(p);
+	}else{
+
+	}
+	
     }
 
 }
