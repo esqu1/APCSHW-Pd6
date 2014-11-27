@@ -4,15 +4,23 @@ import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][] data;
     private ArrayList<String> availables = new ArrayList<String>();
-    Random r = new Random();
+    private Random r = new Random();
 
     /**Initialize the grid to the size specified and fill all of the positions
-     *with spaces.
+     *with spaces. If an invalid input is given, the grid will initialize
+     *to a 10x10 grid.
      *@param row is the starting height of the WordGrid
      *@param col is the starting width of the WordGrid
      */
-    public WordGrid(int row, int cols){
-	data = new char[row][cols];
+    public WordGrid(int rows, int cols, long seed){
+	if(rows > 1 && cols > 1){
+	    data = new char[rows][cols];
+	}else{
+	    data = new char[10][10];
+	}
+	if(seed != 0){	
+	    setSeed(seed);
+	}
 	clear();
     }
 
@@ -44,7 +52,6 @@ public class WordGrid{
      *
      */
     public void randomAdd(ArrayList<String> listOfWords){
-	Random r = new Random();
 	for(int i = 0; i < listOfWords.size(); i++){
 	    for(int j = 0; j < 3; j++){
 		if(addWord(listOfWords.get(i),
@@ -89,13 +96,17 @@ public class WordGrid{
      *or there are overlapping letter that do not match, then false is returned.
      */
     public boolean addWord(String word, int row, int col, int dirx, int diry){
-	if(Math.abs(dirx) > 1 || Math.abs(diry) > 1){
-	    return false;
+	if(checkWord(word,row,col,dirx,diry)){
+	    for(int i = 0; i < word.length(); i++){
+		data[row+i*diry][col+i*dirx] = word.charAt(i);
+	    }
+	    return true;
 	}
-	if(dirx == 0 && diry == 0){
-	    return false;
-	}
-	if((Math.abs(dirx) == 1 && word.length() > data[0].length) || (Math.abs(diry) == 1 && word.length() > data.length)){
+	return false;
+    }
+
+    public boolean checkWord(String word, int row, int col, int dirx, int diry){
+	if(Math.abs(dirx) > 1 || Math.abs(diry) > 1 || (dirx == 0 && diry == 0) || (Math.abs(dirx) == 1 && word.length() > data[0].length) || (Math.abs(diry) == 1 && word.length() > data.length)){
 	    return false;
 	}
 	for(int i = 0; i < word.length(); i++){
@@ -103,17 +114,13 @@ public class WordGrid{
 		return false;
 	    }
 	}
-	for(int i = 0; i < word.length(); i++){
-	    data[row+i*diry][col+i*dirx] = word.charAt(i);
-	}
-	return true;      
+	return true;
     }
 
     /**Fills the remaining empty parts of the puzzle with random characters.
      *
      */
     public void fillRest(){
-	Random r = new Random();
 	for(int i = 0; i < data.length; i++){
 	    for(int j = 0; j < data[0].length; j++){
 		if(data[i][j] == ' '){

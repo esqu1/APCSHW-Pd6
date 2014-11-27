@@ -14,10 +14,14 @@ public class Driver{
 
     public static void main(String[] args){
 	if(args.length > 0){
-	    
+	    WordGrid p;
+	    Random rand = new Random();
 	    Scanner s;
-	    WordGrid p = new WordGrid(Integer.parseInt(args[0]),Integer.parseInt(args[1]));
-	    p.setSeed(args[2]);
+	    if(args.length > 2){
+		p = new WordGrid(Integer.parseInt(args[0]),Integer.parseInt(args[1]),Long.parseLong(args[2]));
+	    }else{
+		p = new WordGrid(Integer.parseInt(args[0]),Integer.parseInt(args[1]),rand.nextLong());
+	    }
 	    File F = new File("words.txt");
 	    try{
 		s = new Scanner(F);
@@ -44,11 +48,11 @@ public class Driver{
 	    System.out.println(p);
 	}else{
 	    System.out.println("Usage:\n" +
-			       "java Driver <rows> <cols> [<random seed> [<display answer>]]\n" +
+			       "  java Driver <rows> <cols> [<random seed> [<display answer>]]\n" +
 			       "\n" +
-			       "<rows> and <cols> specify the number of row and columns, respectively.\n" +
-			       "<random seed> is a long-type number that will generate a puzzle based on the seed.\n" +
-			       "<display answer> is set to 1 if you want the answer to be revealed.");
+			       "  <rows> and <cols> specify the number of row and columns, respectively.\n" +
+			       "  <random seed> is a long-type number that will generate a puzzle based on the seed.\n" +
+			       "  <display answer> is set to 1 if you want the answer to be revealed.");
 
 	}
 	
