@@ -12,14 +12,11 @@ public class WordGrid{
      *@param row is the starting height of the WordGrid
      *@param col is the starting width of the WordGrid
      */
-    public WordGrid(int rows, int cols, long seed){
+    public WordGrid(int rows, int cols){
 	if(rows > 1 && cols > 1){
 	    data = new char[rows][cols];
 	}else{
 	    data = new char[10][10];
-	}
-	if(seed != 0){	
-	    setSeed(seed);
 	}
 	clear();
     }

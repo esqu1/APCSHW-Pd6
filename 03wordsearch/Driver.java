@@ -14,19 +14,19 @@ public class Driver{
 
     public static void main(String[] args){
 	if(args.length > 0){
-	    WordGrid p;
 	    Random rand = new Random();
-	    Scanner s;
+	    int el0 = Integer.parseInt(args[0]);
+	    int el1 = Integer.parseInt(args[1]);
+	    long el2;
 	    if(args.length > 2){
-		p = new WordGrid(Integer.parseInt(args[0]),Integer.parseInt(args[1]),Long.parseLong(args[2]));
+		el2 = Long.parseLong(args[2]);
 	    }else{
-		p = new WordGrid(Integer.parseInt(args[0]),Integer.parseInt(args[1]),rand.nextLong());
+		el2 = rand.nextLong();
 	    }
-	    if(args.length > 3 && args[3].equals("1")){
-		p.loadWordsFromFile("words.txt",false);
-	    }else{
-		p.loadWordsFromFile("words.txt",true);
-	    }
+	    boolean el3 = !(args.length > 3 && args[3].equals("1"));
+	    WordGrid p = new WordGrid(el0,el1);
+	    p.setSeed(el2);
+	    p.loadWordsFromFile("words.txt",el3);
 	    System.out.println("Welcome, mortal! In a few milliseconds, you will be faced with a word search puzzle!");
 	    pause(2);
 	    System.out.println("Here are the words you will need to find:\n" + p.wordsInPuzzle());
