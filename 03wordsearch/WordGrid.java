@@ -35,7 +35,7 @@ public class WordGrid{
     private void clear(){
 	for(int i = 0; i < data.length; i++){
 	    for(int j = 0; j < data[i].length; j++){
-		data[i][j] = ' ';
+		data[i][j] = '_';
 	    }
 	}
     }
@@ -46,7 +46,37 @@ public class WordGrid{
     public ArrayList<String> getAvailables(){
 	return availables;
     }
-    
+
+    public void loadWordsFromFile(String filename, boolean fillRandomLetters){
+	Scanner s;
+	File F = new File("words.txt");
+	try{
+	    s = new Scanner(F);
+	}catch(FileNotFoundException e){
+	    s = new Scanner(System.in);
+	}
+	ArrayList<String> str = new ArrayList<String>();
+	while(s.hasNext()){
+	    str.add(s.next());
+	}
+	randomAdd(str);
+	if(fillRandomLetters){
+	    fillRest();
+	}
+	    
+    }
+
+    public String wordsInPuzzle(){
+	String s = "";
+	for(int i = 0; i < getAvailables().size(); i++){
+	    s += getAvailables().get(i) + " ";
+	    if(i % 3 == 2){
+		s += "\n";
+	    }
+	}
+	return s;
+	
+    }
 
     /**Attempts to randomly add the available words to the Word Search puzzle.
      *
@@ -64,7 +94,6 @@ public class WordGrid{
 		}
 	    }
 	}
-	fillRest();
     }
     
     /**The proper formatting for a WordGrid is created in the toString.
@@ -105,12 +134,21 @@ public class WordGrid{
 	return false;
     }
 
+    /**Checks to see if a word can be added to the puzzle.
+     *@param word is any text to be added to the word grid.
+     *@param row is the vertical location of where you want the word to start.
+     *@param col is the horizontal location of where you want the word to start.
+     *@param dirx ranges from -1 to 1, specifies the direction of the word in the horizontal direction.
+     *@param diry ranges from -1 to 1, specifries the direciton of the word in the horizontal direction.
+     *@return true when the word is added successfully. When the word doesn't fit,
+     *or there are overlapping letter that do not match, then false is returned.
+     */
     public boolean checkWord(String word, int row, int col, int dirx, int diry){
 	if(Math.abs(dirx) > 1 || Math.abs(diry) > 1 || (dirx == 0 && diry == 0) || (Math.abs(dirx) == 1 && word.length() > data[0].length) || (Math.abs(diry) == 1 && word.length() > data.length)){
 	    return false;
 	}
 	for(int i = 0; i < word.length(); i++){
-	    if((row+i*diry < 0 || row+i*diry >= data.length || col+i*dirx < 0 || col+i*dirx >= data[0].length) || data[row+i*diry][col+i*dirx] != ' ' && word.charAt(i) != data[row+i*diry][col+i*dirx]){
+	    if((row+i*diry < 0 || row+i*diry >= data.length || col+i*dirx < 0 || col+i*dirx >= data[0].length) || data[row+i*diry][col+i*dirx] != '_' && word.charAt(i) != data[row+i*diry][col+i*dirx]){
 		return false;
 	    }
 	}
@@ -123,7 +161,7 @@ public class WordGrid{
     public void fillRest(){
 	for(int i = 0; i < data.length; i++){
 	    for(int j = 0; j < data[0].length; j++){
-		if(data[i][j] == ' '){
+		if(data[i][j] == '_'){
 		    data[i][j] = (char)('a' + r.nextInt(26));
 		}
 	    }

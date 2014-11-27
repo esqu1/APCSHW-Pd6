@@ -22,29 +22,15 @@ public class Driver{
 	    }else{
 		p = new WordGrid(Integer.parseInt(args[0]),Integer.parseInt(args[1]),rand.nextLong());
 	    }
-	    File F = new File("words.txt");
-	    try{
-		s = new Scanner(F);
-	    }catch(FileNotFoundException e){
-		s = new Scanner(System.in);
+	    if(args.length > 3 && args[3].equals("1")){
+		p.loadWordsFromFile("words.txt",false);
+	    }else{
+		p.loadWordsFromFile("words.txt",true);
 	    }
-	    ArrayList<String> str = new ArrayList<String>();
-	    while(s.hasNext()){
-		str.add(s.next());
-	    }
-	    p.randomAdd(str);
 	    System.out.println("Welcome, mortal! In a few milliseconds, you will be faced with a word search puzzle!");
 	    pause(2);
-	    System.out.println("Here are the words you will need to find:");
-	    pause(1);
-	    for(int i = 0; i < p.getAvailables().size(); i++){
-		System.out.print(p.getAvailables().get(i) + " ");
-		if(i % 3 == 2){
-		    System.out.println("");
-		}
-	    }	
-
-	    System.out.println("");
+	    System.out.println("Here are the words you will need to find:\n" + p.wordsInPuzzle());
+	    pause(2);
 	    System.out.println(p);
 	}else{
 	    System.out.println("Usage:\n" +
