@@ -25,6 +25,14 @@ higgs
 navier
 maxwell
 boyle
-konstantinovich
 krebs
 calvin
+nobel
+avogadro
+copernicus
+hess
+boltzmann
+nernst
+curie
+kirchoff
+bose
