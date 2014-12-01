@@ -1,15 +1,15 @@
 public class SuperArray{
-    private Object[] Array;
+    private String[] Array;
     private int size;
 
     //constructors
     public SuperArray(){
-	Array = new Object[10];
+	Array = new String[10];
 	size = 0;
     }
 
     public SuperArray(int s){
-	Array = new Object[s];
+	Array = new String[s];
 	size = 0;
     }
 
@@ -22,7 +22,7 @@ public class SuperArray{
 	return s;
     }
 
-    public void add(Object o){
+    public void add(String o){
 	if(size == Array.length){
 	    resize(size() + 5);
 	}
@@ -30,14 +30,14 @@ public class SuperArray{
 	size += 1;
     }
 
-    public void add(int index, Object o){
+    public void add(int index, String o){
 	if(size == Array.length){
 	    resize(size() + 5);
 	}
 	if(index >= size()){
 	    add(o);
 	}else{
-	    Object[] backupfull = new Object[size() + 1];
+	    String[] backupfull = new String[size() + 1];
 	    for(int i = 0; i < index; i++){
 		backupfull[i] = Array[i];
 	    }
@@ -58,41 +58,41 @@ public class SuperArray{
     }
 
     public void resize(int newSize){
-	Object[] backup = new Object[newSize];
+	String[] backup = new String[newSize];
 	for(int i = 0; i < size(); i++){
 	    backup[i] = Array[i];
 	}
 	Array = backup;
     }
 
-    public Object set(int index, Object o){
+    public String set(int index, String o){
 	if(index < 0 || index >= size()){
 	    throw new IndexOutOfBoundsException();
 	}
-	Object backup = Array[index];
+	String backup = Array[index];
 	Array[index] = o;
 	return backup;
     }
 
-    public Object get(int index){
+    public String get(int index){
 	if(index < 0 || index >= size()){
 	    throw new IndexOutOfBoundsException();
 	}
 	return Array[index];
     }
 
-    public Object remove(int index){
+    public String remove(int index){
 	if(index < 0 || index >= size()){
 	    throw new IndexOutOfBoundsException();
 	}
-	Object[] backup = new Object[size() - 1];
+	String[] backup = new String[size() - 1];
 	for(int i = 0; i < index; i++){
 	    backup[i] = Array[i];
 	}
 	for(int i = index; i < size() - 1; i++){
 	    backup[i] = Array[i+1];
 	}
-	Object tobe = Array[index];
+	String tobe = Array[index];
 	Array = backup;
 	size -= 1;
 	if(Array.length - size() >= 5){
