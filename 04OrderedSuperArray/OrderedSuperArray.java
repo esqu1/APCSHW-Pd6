@@ -2,6 +2,7 @@ public class OrderedSuperArray extends SuperArray{
 
     public void add(int index, String element){
 	int j = index;
+	/*
 	while(true){
 	    if(element.compareTo(get(j)) < 0){
 		Object[] backupfull = new Object[size() + 1];
@@ -16,11 +17,19 @@ public class OrderedSuperArray extends SuperArray{
 	    }else{
 		i--;
 	    }
-	}
+	    }*/
     }
     
-    public void add(String s){
-	
+    public void add(String element){
+	int index = size() - 1;
+	while(true){
+	    if(element.compareTo(get(index)) < 0){
+		add(index,element);
+	    }else{
+		index--;
+	    }
+	 
+	}
     }
     
 }
