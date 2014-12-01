@@ -1,7 +1,7 @@
 public class OrderedSuperArray extends SuperArray{
 
     public void add(int index, String element){
-
+	add(element);
     }
     
     public void add(String element){
