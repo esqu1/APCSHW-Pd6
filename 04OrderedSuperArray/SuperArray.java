@@ -30,27 +30,20 @@ public class SuperArray{
 	size += 1;
     }
 
-    public void add(int index, String o){
-	if(size == Array.length){
-	    resize(size() + 5);
-	}
-	if(index >= size()){
-	    add(o);
-	}else{
-	    String[] backupfull = new String[size() + 1];
-	    for(int i = 0; i < index; i++){
-		backupfull[i] = Array[i];
-	    }
-	    backupfull[index] = o;
-	    for(int i = index; i < size(); i++){
-		backupfull[i+1] = Array[i];
-	    }
-	    Array = backupfull;
-	    size += 1;
-	}
 
+    public void add(int index, String o){
+	if(index < 0 || index > size() ){
+	    throw new IndexOutOfBoundsException();
+	}				
+	if(size() == Array.length){
+	    resize( size * 2 );
+	}
+	for(int i = Array.length - 1; i > index; i--){
+	    Array[i] = Array[i - 1];
+	}
+	Array[ index ] = o;
+	size++;
     }
-	
 	
 
     public int size(){
