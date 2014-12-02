@@ -100,9 +100,7 @@ public class SuperArray{
 	size = 0;
     }
 
+    public void insertionSort(){
 	
-	
-    
-
-
+    }
 }
