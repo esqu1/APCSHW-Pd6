@@ -101,8 +101,14 @@ public class SuperArray{
     }
 
     public void insertionSort(){
-	for(int i = 0; i < size(); i++){
-	    
+	for(int i = 1; i < size(); i++){
+	    int j = i;
+	    String temp = get(j);
+	    while(j > 0 && temp.compareTo(get(j-1)) < 0){
+		set(j,get(j-1));
+		j--;
+	    }
+	    set(j,temp);
 	}
     }
 }

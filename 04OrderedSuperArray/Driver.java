@@ -10,6 +10,14 @@ public class Driver{
 	System.out.println(L);
 	L.add("apple");
 	System.out.println(L);
+	SuperArray M = new SuperArray();
+	M.add("you");
+	M.add("hi");
+	M.add("nyeh");
+	M.add("apple");
+	M.add("Hey");
+	M.insertionSort();
+	System.out.println(M);
     }
 
 }
