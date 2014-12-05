@@ -15,16 +15,18 @@ public class OrderedSuperArray extends SuperArray{
 	    super.add(index,element);
 	}
     }
-
+    /*
     public int find(String element){
 	int max = Math.ceil(Math.log(size() / Math.log(2)));
 	int s = size() / 2;
 
-	while(!Array[element].equals(element)){
-	    if(){
+	while(!get(s).equals(element)){
+	    if(Array){
 
 	    }
-			    
+	}		    
     }
+    */
+	
     
 }

@@ -1,3 +1,4 @@
+import java.util.*;
 public class SuperArray{
     private String[] Array;
     private int size;
@@ -100,6 +101,10 @@ public class SuperArray{
 	size = 0;
     }
 
+    public void sort(){
+	Arrays.sort(Array);
+    }
+
     public void insertionSort(){
 	for(int i = 1; i < size(); i++){
 	    int j = i;
@@ -119,6 +124,20 @@ public class SuperArray{
 	    }
 	}
 	return -1;
+    }
+
+    public void selectionSort(){
+	for(int i = 0; i < size(); i++){
+	    int min = i;
+	    for(int j = i+1; j < size(); j++){
+		if(get(j).compareTo(get(min)) < 0){
+		    min = j;
+		}
+	    }
+	    String temp = get(i);
+	    set(i,get(min));
+	    set(min,temp);
+	}
     }
 
 }
