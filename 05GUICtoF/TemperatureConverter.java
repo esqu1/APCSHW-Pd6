@@ -48,10 +48,10 @@ public class TemperatureConverter extends JFrame implements ActionListener{
 	if(text.getText().equals("")){
 	    System.out.println("Please enter a number.");
 	}else if(e.getActionCommand().equals("CtoF")){
-	    int k = Double.parseDouble(text.getText());
+	    double k = Double.parseDouble(text.getText());
 	    output.setText("" + ((double)(9 * k) / 5 + 32));
 	}else if(e.getActionCommand().equals("FtoC")){
-	    int k = Double.parseDouble(text.getText());
+	    double k = Double.parseDouble(text.getText());
 	    output.setText("" + (double)(5 * (k - 32)) / 9);
 	}
     }
