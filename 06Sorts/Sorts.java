@@ -29,7 +29,7 @@ public class Sorts{
     public static void bubble(int[] c){
 	boolean status = true;
 	for(int i = c.length; i > 0; i--){
-	    for(int j = 0; j < i; j++){
+	    for(int j = 0; j < i-1; j++){
 		if(c[j] > c[j+1]){
 		    int temp = c[j+1];
 		    c[j+1] = c[j];
