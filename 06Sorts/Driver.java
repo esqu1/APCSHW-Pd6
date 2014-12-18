@@ -8,5 +8,7 @@ public class Driver{
 	for(int el : L){
 	    System.out.println(el);
 	}
+
+	int[] M = {10,6,9,4,5,8,1,2,1};
     }
 }
