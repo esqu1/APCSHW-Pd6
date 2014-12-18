@@ -60,7 +60,15 @@ public class Sorts{
 	for(int i = 0; i < c.length; i++){
 	    bucket.get(c[i] % 10).add(c[i]);
 	}
-	
+	if(bucket.get[0].size() == c.length){
+	    return c;
+	}
+	counter = 0;
+	for(int i = 0; i < bucket.size(); i++){
+	    for(int j = 0; j < bucket.get[i].size(); j++){
+		c[counter] = bucket.get[i].get[j];
+	    }
+	}
     }
     
 }
