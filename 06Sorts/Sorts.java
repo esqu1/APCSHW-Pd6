@@ -1,4 +1,14 @@
+import java.util.*;
+
 public class Sorts{
+
+    public static String name(){
+	return "Lin,Brandon";
+    }
+
+    public static int period(){
+	return 6;
+    }
 
     public static void insertion(int[] c){
 	for(int i = 1; i < c.length; i++){
@@ -44,4 +54,13 @@ public class Sorts{
 	    }
 	}
     }
+
+    public static void radix(int[] c){
+	ArrayList<ArrayList<Integer>> bucket = new ArrayList<ArrayList<Integer>>(10);
+	for(int i = 0; i < c.length; i++){
+	    bucket.get(c[i] % 10).add(c[i]);
+	}
+	
+    }
+    
 }
