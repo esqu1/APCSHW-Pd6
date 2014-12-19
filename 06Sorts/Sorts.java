@@ -63,7 +63,7 @@ public class Sorts{
 	int digs = 1;
 	while(true){		
 	    for(int i = 0; i < c.length; i++){
-		bucket.get(c[i] % (Math.pow(10,digs))).add(c[i]);
+		bucket.get(c[i] % ((int)Math.pow(10,digs))).add(c[i]);
 	    }
 	    if(bucket.get(0).size() == c.length){
 		return;
