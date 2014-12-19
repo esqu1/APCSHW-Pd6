@@ -57,16 +57,22 @@ public class Sorts{
 
     public static void radix(int[] c){
 	ArrayList<ArrayList<Integer>> bucket = new ArrayList<ArrayList<Integer>>(10);
-	for(int i = 0; i < c.length; i++){
-	    bucket.get(c[i] % 10).add(c[i]);
+	for(ArrayList<Integer> el : bucket){
+	    el = new ArrayList<Integer>();
 	}
-	if(bucket.get[0].size() == c.length){
-	    return c;
-	}
-	counter = 0;
-	for(int i = 0; i < bucket.size(); i++){
-	    for(int j = 0; j < bucket.get[i].size(); j++){
-		c[counter] = bucket.get[i].get[j];
+	int digs = 1;
+	while(true){		
+	    for(int i = 0; i < c.length; i++){
+		bucket.get(c[i] % (Math.pow(10,digs))).add(c[i]);
+	    }
+	    if(bucket.get(0).size() == c.length){
+		return;
+	    }
+	    int counter = 0;
+	    for(int i = 0; i < bucket.size(); i++){
+		for(int j = 0; j < bucket.get(i).size(); j++){
+		    c[counter] = bucket.get(i).get(j);
+		}
 	    }
 	}
     }
