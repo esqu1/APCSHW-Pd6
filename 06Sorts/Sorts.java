@@ -10,6 +10,15 @@ public class Sorts{
 	return 6;
     }
 
+    public static int[] randomArrayofInts(int length){
+	int[] c = new int[length];
+	Random r = new Random();
+	for(int i = 0; i < length; i++){
+	    c[i] = r.nextInt(10000);
+	}
+	return c;
+    }
+
     public static void insertion(int[] c){
 	for(int i = 1; i < c.length; i++){
 	    int j = i;
@@ -32,7 +41,7 @@ public class Sorts{
 	    }
 	    int temp = c[i];
 	    c[i] = c[min];
-	    c[min] = c[temp];
+	    c[min] = temp;
 	}
     }
 
@@ -64,7 +73,6 @@ public class Sorts{
 	while(true){		
 	    for(int i = 0; i < c.length; i++){
 		bucket.get((c[i] / (int)Math.pow(10,digs)) % 10).add(c[i]);
-		System.out.println(bucket);
 	    }
 	    if(bucket.get(0).size() == c.length){
 		return;
@@ -77,7 +85,6 @@ public class Sorts{
 		}
 		bucket.get(i).clear();
 	    }
-	    System.out.println(Arrays.toString(c));
 	    digs += 1;
 	}
     }
