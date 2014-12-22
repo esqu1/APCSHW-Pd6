@@ -60,11 +60,11 @@ public class Sorts{
 	for(int i = 0; i < 10; i++){
 	    bucket.add(new ArrayList<Integer>());
 	}	    
-	int digs = 1;
+	int digs = 0;
 	while(true){		
 	    for(int i = 0; i < c.length; i++){
+		bucket.get((c[i] / (int)Math.pow(10,digs)) % 10).add(c[i]);
 		System.out.println(bucket);
-		bucket.get((c[i] % ((int)Math.pow(10,digs))) - (c[i] % ((int)Math.pow(10,digs-1)))).add(c[i]);
 	    }
 	    if(bucket.get(0).size() == c.length){
 		return;
@@ -77,6 +77,7 @@ public class Sorts{
 		}
 		bucket.get(i).clear();
 	    }
+	    System.out.println(Arrays.toString(c));
 	    digs += 1;
 	}
     }

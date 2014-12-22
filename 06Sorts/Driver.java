@@ -9,10 +9,10 @@ public class Driver{
 	    System.out.println(el);
 	}
 
-	int[] M = {10,6,9,4,5,8,1,2,1};
+	int[] M = {100,68,967,4,556,88,13,244,10};
 	Sorts.radix(M);
 	for(int el : M){
-	    System.out.println(M);
+	    System.out.println(el);
 	}
     }
 }
