@@ -56,14 +56,15 @@ public class Sorts{
     }
 
     public static void radix(int[] c){
-	ArrayList<ArrayList<Integer>> bucket = new ArrayList<ArrayList<Integer>>(10);
-	for(ArrayList<Integer> el : bucket){
-	    el = new ArrayList<Integer>();
-	}
+	ArrayList<ArrayList<Integer>> bucket = new ArrayList<ArrayList<Integer>>();
+	for(int i = 0; i < 10; i++){
+	    bucket.add(new ArrayList<Integer>());
+	}	    
 	int digs = 1;
 	while(true){		
 	    for(int i = 0; i < c.length; i++){
-		bucket.get(c[i] % ((int)Math.pow(10,digs))).add(c[i]);
+		System.out.println(bucket);
+		bucket.get((c[i] % ((int)Math.pow(10,digs))) - (c[i] % ((int)Math.pow(10,digs-1)))).add(c[i]);
 	    }
 	    if(bucket.get(0).size() == c.length){
 		return;
@@ -72,8 +73,11 @@ public class Sorts{
 	    for(int i = 0; i < bucket.size(); i++){
 		for(int j = 0; j < bucket.get(i).size(); j++){
 		    c[counter] = bucket.get(i).get(j);
+		    counter += 1;
 		}
+		bucket.get(i).clear();
 	    }
+	    digs += 1;
 	}
     }
     

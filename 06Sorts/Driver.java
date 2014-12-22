@@ -11,7 +11,7 @@ public class Driver{
 
 	int[] M = {10,6,9,4,5,8,1,2,1};
 	Sorts.radix(M);
-	for(int el : L){
+	for(int el : M){
 	    System.out.println(M);
 	}
     }
